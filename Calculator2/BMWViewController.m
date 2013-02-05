@@ -18,6 +18,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    UIImage *patternImage = [UIImage imageNamed:@"dark_fish_skin.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:patternImage];
 }
 
 - (void)didReceiveMemoryWarning

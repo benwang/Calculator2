@@ -10,6 +10,6 @@
 
 @interface BMWViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *CalcScreen;
-*CalcScreen = 
+
 
 @end

@@ -1,6 +1,11 @@
 Calculator
 Benjamin Wang
 
+Now I have actually written Calculator.  I have the basic features of +,-,*,/.  I am able to deal with decimals and - numbers, but I don't have a switch to +/- button.  The cool features I have included are parenthesis, exponentiation, resetting the screen to 0 upon clearing input, ...
+
+
+Hope you enjoy reading!
+
 import java.util.Set;
 import java.util.TreeSet;
 

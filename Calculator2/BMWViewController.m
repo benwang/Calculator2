@@ -7,6 +7,8 @@
 //
 
 #import "BMWViewController.h"
+#import "BMWPostfixCalc.m"
+#import "BMWShunting-Yard.m"
 
 @interface BMWViewController ()
 @property (strong, nonatomic) NSString* displayText;
@@ -41,12 +43,17 @@
     self.displayText = @"";
 }
 
-//Throw message on screen if something wrong
-//not sure how to connect to controller...
-//- (void)error:(NSString*)message {
-//    self.displayScreen.text = message;
-//    self.displayText = @"";
-//}
+- (IBAction)equals:(id)sender {
+    BMWShunting_Yard* convertPostfix = [[BMWShunting_Yard alloc] init];
+    BMWPostfixCalc* calculator = [[BMWPostfixCalc alloc] init];
+    
+    NSString* postFixExpression = [convertPostfix parseInput:self.displayText];
+    NSString* result = [NSString stringWithFormat: @"%@",[calculator evaluate:postFixExpression]];
+    
+    self.displayScreen.text = result;
+    self.displayText = result;
+}
+
 
 @end
 

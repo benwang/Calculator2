@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25AA516E16C8316800D267EB /* BMWShunting-Yard.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AA516D16C8316800D267EB /* BMWShunting-Yard.m */; };
+		25AA517116C8DA5400D267EB /* BMWPostfixCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AA517016C8DA5400D267EB /* BMWPostfixCalc.m */; };
 		25E8B8C716C0822100B2BED7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8B8C616C0822100B2BED7 /* UIKit.framework */; };
 		25E8B8C916C0822100B2BED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8B8C816C0822100B2BED7 /* Foundation.framework */; };
 		25E8B8CB16C0822100B2BED7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8B8CA16C0822100B2BED7 /* CoreGraphics.framework */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		25AA516C16C8316800D267EB /* BMWShunting-Yard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BMWShunting-Yard.h"; sourceTree = "<group>"; };
 		25AA516D16C8316800D267EB /* BMWShunting-Yard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BMWShunting-Yard.m"; sourceTree = "<group>"; };
+		25AA516F16C8DA5400D267EB /* BMWPostfixCalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWPostfixCalc.h; sourceTree = "<group>"; };
+		25AA517016C8DA5400D267EB /* BMWPostfixCalc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWPostfixCalc.m; sourceTree = "<group>"; };
 		25E8B8C316C0822100B2BED7 /* Calculator2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E8B8C616C0822100B2BED7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		25E8B8C816C0822100B2BED7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,8 @@
 				25E8B90716C70ACE00B2BED7 /* BMWStack.m */,
 				25AA516C16C8316800D267EB /* BMWShunting-Yard.h */,
 				25AA516D16C8316800D267EB /* BMWShunting-Yard.m */,
+				25AA516F16C8DA5400D267EB /* BMWPostfixCalc.h */,
+				25AA517016C8DA5400D267EB /* BMWPostfixCalc.m */,
 			);
 			path = Calculator2;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				25E8B8E616C0822200B2BED7 /* BMWViewController.m in Sources */,
 				25E8B90816C70ACE00B2BED7 /* BMWStack.m in Sources */,
 				25AA516E16C8316800D267EB /* BMWShunting-Yard.m in Sources */,
+				25AA517116C8DA5400D267EB /* BMWPostfixCalc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

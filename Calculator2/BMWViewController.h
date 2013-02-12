@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) IBOutlet
 //note to self: if you delete a refernce, be sure to dereference here too
+//should set as weak 
 
 UILabel *displayScreen;
 
@@ -21,8 +22,7 @@ UILabel *displayScreen;
 
 - (IBAction)clear:(id)sender;
 
-- (void)error:(NSString*)message;
-
+- (IBAction)equals:(id)sender;
 
 
 @end

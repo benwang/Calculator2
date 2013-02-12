@@ -9,9 +9,12 @@
 #import "BMWShunting-Yard.h"
 
 @interface BMWShunting_Yard ()
+    - (BOOL) isNum:(NSString*) stringObj;
+    - (BOOL) isOp:(NSString*)stringObj;
     - (BOOL) precedence:(NSString*) operator1 isGreaterorEqual:(NSString*) operator2;
     - (NSUInteger) operatorPrecedenceInt:(NSString*) operator;
     - (BOOL) balancedParens:(NSString *) input;
+    - (NSMutableArray*) tokenize: (NSString*) expression;
 @end
 
 @implementation BMWShunting_Yard
@@ -28,19 +31,58 @@
         return nil;
     }
     
-    BMWStack * operators = [[BMWStack alloc] init];
-    NSMutableString* output = [NSMutableString stringWithCapacity:[input length]];
+    BMWStack *operators = [[BMWStack alloc] init];
+    NSMutableString *output = [NSMutableString stringWithCapacity:[input length]];
     
-    NSMutableArray * lineToken = [self tokenize: input];
+    NSMutableArray *lineToken = [self tokenize: input];
     
+    for (int i = 0; i < [lineToken count]; i++) {
+        NSString *temp = [lineToken objectAtIndex:i];
+        //TO fix
+        if ([self isNum:temp]) {
+            [output appendString:temp];
+        }
+        else if ([self isOp:temp]){
+            //TODO:
+            
+        }
+        else if ([temp isEqualToString:@"("]) {
+            [operators push:temp];
+        }
+        else if ([temp isEqualToString:@")"]) {
+            NSString * op = [operators pop];
+            while (op && !([op isEqualToString:@"("])) {
+                [output appendString:op];
+                op = [operators pop];
+            }
+            if (!op || !([op isEqualToString:@"("])) {
+                NSLog(@"Unequal Parens!!");
+                return nil;
+            }
+        }
+        else {
+            [output appendString: temp];
+        }
+    }
     
+    while (! [operators isEmpty]) {
+        [output appendString:[operators pop]];
+    }
+    
+    return output;
 }
 
+- (BOOL) isNum:(NSString *)stringObj {
+    return !([stringObj isEqualToString:@"^"] || [stringObj isEqualToString:@"+"] || [stringObj isEqualToString:@"-"] || [stringObj isEqualToString:@"*"] || [stringObj isEqualToString:@"/"] || [stringObj isEqualToString:@"("] || [stringObj isEqualToString:@")"]);
+}
 
+- (BOOL) isOp:(NSString*)stringObj {
+    return [stringObj isEqualToString:@"^"] || [stringObj isEqualToString:@"+"] || [stringObj isEqualToString:@"-"] || [stringObj isEqualToString:@"*"] || [stringObj isEqualToString:@"/"];
+}
 
 - (BOOL) precedence:(NSString*) operator1 isGreaterorEqual:(NSString*) operator2 {
-    int op1 = operatorPrecedenceInt(operator1);
-    int op2 = operatorPrecedenceInt(operator2);
+    int op1 = [self operatorPrecedenceInt: operator1];
+    int op2 = [self operatorPrecedenceInt: operator2];
     return op1 >= op2;
 }
 
@@ -73,4 +115,68 @@
     return openParens == closedParens;
 }
 
+- (NSMutableArray*) tokenize: (NSString*) expression {
+    int expressionLength = [expression length];
+    NSMutableArray* tokenArr = [NSMutableArray arrayWithCapacity: expressionLength];
+    
+    NSMutableString *numToken = [NSMutableString stringWithCapacity:4];
+    
+    //Add numbers and tokens to stack
+    for (int i = 0; i < expressionLength; i++) {
+        UniChar ch = [expression characterAtIndex:i];
+        switch (ch) {
+            //operands and parens
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '^':
+            case '(':
+            case ')':
+                if ([numToken length] > 0) {
+                    [tokenArr addObject: [NSString stringWithString: numToken]];
+                    [numToken setString: @""];
+                }
+                [tokenArr addObject:[NSString stringWithCharacters:&ch length:1]];
+                break;
+            
+            //numbers
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case '.':
+                [numToken appendString:[NSString stringWithCharacters:&ch length:1]];
+                break;
+            
+            default:
+                NSLog(@"Input, %ch, is not supported!", ch);
+                break;
+        }
+    }
+    
+    if ([numToken length] > 0) {
+        [tokenArr addObject:[NSString stringWithString:numToken]];
+    }
+    
+    return tokenArr;
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+

@@ -12,11 +12,12 @@
 
 - (BMWStack*) init {
     self = [super init];
+    mutArray = [[NSMutableArray alloc] initWithCapacity:30];
     return self;
 }
 
-- (void) push : (id) object {
-    [mutArray addObject : object];
+- (void) push : (id) obj {
+    [mutArray addObject: obj];
 }
 
 - (int) length {

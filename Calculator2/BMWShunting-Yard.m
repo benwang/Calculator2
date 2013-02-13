@@ -30,21 +30,20 @@
 //        [self error:@"Unbalanced parens"];
         return nil;
     }
-    
     BMWStack *operators = [[BMWStack alloc] init];
     NSMutableString *output = [NSMutableString stringWithCapacity:[input length]];
-    
     NSMutableArray *lineToken = [self tokenize: input];
+//    NSMutableArray *output = [NSMutableArray arrayWithCapacity: [lineToken count]];
+
     
     for (int i = 0; i < [lineToken count]; i++) {
         NSString *temp = [lineToken objectAtIndex:i];
-        //TO fix
+
         if ([self isNum:temp]) {
-            [output appendString:temp];
+            [output appendString:[NSString stringWithFormat:@"%@ ", temp]];
         }
         else if ([self isOp:temp]){
-            //TODO:
-            
+            [operators push:temp];
         }
         else if ([temp isEqualToString:@"("]) {
             [operators push:temp];
@@ -52,7 +51,7 @@
         else if ([temp isEqualToString:@")"]) {
             NSString * op = [operators pop];
             while (op && !([op isEqualToString:@"("])) {
-                [output appendString:op];
+                [output appendString:[NSString stringWithFormat:@"%@ ", op]];
                 op = [operators pop];
             }
             if (!op || !([op isEqualToString:@"("])) {
@@ -61,14 +60,13 @@
             }
         }
         else {
-            [output appendString: temp];
+            [output appendString: [NSString stringWithFormat:@"%@ ", temp]];
         }
     }
     
     while (! [operators isEmpty]) {
         [output appendString:[operators pop]];
     }
-    
     return output;
 }
 
@@ -154,7 +152,8 @@
             case '.':
                 [numToken appendString:[NSString stringWithCharacters:&ch length:1]];
                 break;
-            
+            case ' ':
+                break;
             default:
                 NSLog(@"Input, %ch, is not supported!", ch);
                 break;

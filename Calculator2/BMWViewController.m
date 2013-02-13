@@ -7,8 +7,8 @@
 //
 
 #import "BMWViewController.h"
-#import "BMWPostfixCalc.m"
-#import "BMWShunting-Yard.m"
+#import "BMWPostfixCalc.h"
+#import "BMWShunting-Yard.h"
 
 @interface BMWViewController ()
 @property (strong, nonatomic) NSString* displayText;
@@ -48,10 +48,16 @@
     BMWPostfixCalc* calculator = [[BMWPostfixCalc alloc] init];
     
     NSString* postFixExpression = [convertPostfix parseInput:self.displayText];
-    NSString* result = [NSString stringWithFormat: @"%@",[calculator evaluate:postFixExpression]];
-    
-    self.displayScreen.text = result;
-    self.displayText = result;
+    NSString* result;
+    if ([[calculator evaluate:postFixExpression] isEqual:nil] || [[calculator evaluate:postFixExpression] isEqual: [NSDecimalNumber notANumber]]) {
+        self.displayScreen.text = @"ERROR";
+        self.displayText = @"";
+    }
+    else {
+        result = [NSString stringWithFormat: @"%@",[calculator evaluate:postFixExpression]];
+        self.displayScreen.text = result;
+        self.displayText = result;
+    }
 }
 
 

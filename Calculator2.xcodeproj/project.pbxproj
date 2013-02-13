@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25AA516E16C8316800D267EB /* BMWShunting-Yard.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AA516D16C8316800D267EB /* BMWShunting-Yard.m */; };
-		25AA517116C8DA5400D267EB /* BMWPostfixCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AA517016C8DA5400D267EB /* BMWPostfixCalc.m */; };
+		25AA51C016CB43AE00D267EB /* BMWStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E8B90716C70ACE00B2BED7 /* BMWStack.m */; };
+		25AA51C116CB43BB00D267EB /* BMWShunting-Yard.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AA516D16C8316800D267EB /* BMWShunting-Yard.m */; };
+		25AA51C216CB43BF00D267EB /* BMWPostfixCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AA517016C8DA5400D267EB /* BMWPostfixCalc.m */; };
 		25E8B8C716C0822100B2BED7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8B8C616C0822100B2BED7 /* UIKit.framework */; };
 		25E8B8C916C0822100B2BED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8B8C816C0822100B2BED7 /* Foundation.framework */; };
 		25E8B8CB16C0822100B2BED7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E8B8CA16C0822100B2BED7 /* CoreGraphics.framework */; };
@@ -27,7 +28,6 @@
 		25E8B8F816C0822200B2BED7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25E8B8F616C0822200B2BED7 /* InfoPlist.strings */; };
 		25E8B8FB16C0822200B2BED7 /* Calculator2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E8B8FA16C0822200B2BED7 /* Calculator2Tests.m */; };
 		25E8B90516C4391F00B2BED7 /* dark_fish_skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E8B90416C4391F00B2BED7 /* dark_fish_skin.png */; };
-		25E8B90816C70ACE00B2BED7 /* BMWStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E8B90716C70ACE00B2BED7 /* BMWStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,7 +130,13 @@
 		25E8B8CC16C0822100B2BED7 /* Calculator2 */ = {
 			isa = PBXGroup;
 			children = (
+				25AA517016C8DA5400D267EB /* BMWPostfixCalc.m */,
+				25AA516F16C8DA5400D267EB /* BMWPostfixCalc.h */,
+				25AA516D16C8316800D267EB /* BMWShunting-Yard.m */,
+				25AA516C16C8316800D267EB /* BMWShunting-Yard.h */,
+				25E8B90716C70ACE00B2BED7 /* BMWStack.m */,
 				25E8B90416C4391F00B2BED7 /* dark_fish_skin.png */,
+				25E8B90616C70ACE00B2BED7 /* BMWStack.h */,
 				25E8B8D516C0822200B2BED7 /* BMWAppDelegate.h */,
 				25E8B8D616C0822200B2BED7 /* BMWAppDelegate.m */,
 				25E8B8DE16C0822200B2BED7 /* MainStoryboard_iPhone.storyboard */,
@@ -138,12 +144,6 @@
 				25E8B8E416C0822200B2BED7 /* BMWViewController.h */,
 				25E8B8E516C0822200B2BED7 /* BMWViewController.m */,
 				25E8B8CD16C0822100B2BED7 /* Supporting Files */,
-				25E8B90616C70ACE00B2BED7 /* BMWStack.h */,
-				25E8B90716C70ACE00B2BED7 /* BMWStack.m */,
-				25AA516C16C8316800D267EB /* BMWShunting-Yard.h */,
-				25AA516D16C8316800D267EB /* BMWShunting-Yard.m */,
-				25AA516F16C8DA5400D267EB /* BMWPostfixCalc.h */,
-				25AA517016C8DA5400D267EB /* BMWPostfixCalc.m */,
 			);
 			path = Calculator2;
 			sourceTree = "<group>";
@@ -294,12 +294,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25AA51C216CB43BF00D267EB /* BMWPostfixCalc.m in Sources */,
+				25AA51C116CB43BB00D267EB /* BMWShunting-Yard.m in Sources */,
+				25AA51C016CB43AE00D267EB /* BMWStack.m in Sources */,
 				25E8B8D316C0822200B2BED7 /* main.m in Sources */,
 				25E8B8D716C0822200B2BED7 /* BMWAppDelegate.m in Sources */,
 				25E8B8E616C0822200B2BED7 /* BMWViewController.m in Sources */,
-				25E8B90816C70ACE00B2BED7 /* BMWStack.m in Sources */,
-				25AA516E16C8316800D267EB /* BMWShunting-Yard.m in Sources */,
-				25AA517116C8DA5400D267EB /* BMWPostfixCalc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +371,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -403,6 +404,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;

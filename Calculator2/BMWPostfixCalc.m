@@ -30,24 +30,28 @@
             NSDecimalNumber* a = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
 
             answer = [a decimalNumberByAdding:b];
+            [stacks push: [NSString stringWithFormat:@"%@", answer]];
         }
         else if ([token isEqualToString:@"-"]) {
             NSDecimalNumber* b = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
             NSDecimalNumber* a = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
             
             answer = [a decimalNumberBySubtracting:b];
+            [stacks push: [NSString stringWithFormat:@"%@", answer]];
         }
         else if ([token isEqualToString:@"*"]) {
             NSDecimalNumber* b = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
             NSDecimalNumber* a = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
             
             answer = [a decimalNumberByMultiplyingBy:b];
+            [stacks push: [NSString stringWithFormat:@"%@", answer]];
         }
         else if ([token isEqualToString:@"^"]) {
             NSDecimalNumber* b = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
             NSDecimalNumber* a = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
             
             answer = [a decimalNumberByRaisingToPower:[b intValue]];
+            [stacks push: [NSString stringWithFormat:@"%@", answer]];
         }
         else if ([token isEqualToString:@"/"]) {
             NSDecimalNumber* b = [NSDecimalNumber decimalNumberWithString: [stacks pop]];
@@ -60,17 +64,18 @@
             }
             else {
                 answer = [a decimalNumberByDividingBy:b];
+                [stacks push: [NSString stringWithFormat:@"%@", answer]];
             }
         } else {
             [stacks push:token];
         }
     }
-    if ([stacks isEmpty]) {
+    if ([stacks length] == 1) {
         return answer;
     } else {
         return nil;
     }
-    
+    NSLog(@"Post-eval answer: %@", answer);
     return answer;
 }
 

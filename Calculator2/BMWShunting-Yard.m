@@ -65,8 +65,9 @@
     }
     
     while (! [operators isEmpty]) {
-        [output appendString:[operators pop]];
+        [output appendString: [NSString stringWithFormat:@"%@ ",[operators pop]]];
     }
+    NSLog(@"Postfix output: %@", output);
     return output;
 }
 

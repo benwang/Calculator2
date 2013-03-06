@@ -6,6 +6,14 @@ Now I have actually written Calculator.  I have the basic features of +,-,*,/.  
 
 Hope you enjoy reading!
 
+
+
+
+//Old try of implementing in Java--I decided to use Shunting Yard instead.  Funny thing, for 121 this week, the HW was
+to implement Shunting Yard in Java... so I was definitely pretty familiar with the alogirithm!
+
+
+
 import java.util.Set;
 import java.util.TreeSet;
 

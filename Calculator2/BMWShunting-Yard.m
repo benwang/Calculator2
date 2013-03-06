@@ -27,7 +27,7 @@
 
 - (NSString*) parseInput:(NSString *)input {
     if (![self balancedParens:input]) {
-//        [self error:@"Unbalanced parens"];
+        NSLog(@"Unbalanced Parens");
         return nil;
     }
     BMWStack *operators = [[BMWStack alloc] init];
@@ -38,11 +38,16 @@
     
     for (int i = 0; i < [lineToken count]; i++) {
         NSString *temp = [lineToken objectAtIndex:i];
-
+        
         if ([self isNum:temp]) {
             [output appendString:[NSString stringWithFormat:@"%@ ", temp]];
         }
         else if ([self isOp:temp]){
+            NSString * op = [operators peek];
+            while ([self operatorPrecedenceInt:op] != 0 && [self precedence:op isGreaterorEqual:temp]) {
+                [output appendString: [NSString stringWithFormat: @"%@ ", [operators pop]]];
+                op = [operators peek];
+            }
             [operators push:temp];
         }
         else if ([temp isEqualToString:@"("]) {
